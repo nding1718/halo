@@ -15,6 +15,12 @@ import java.util.Optional;
 /**
  * CrudService interface contains some common methods.
  *
+ * Notice the NonNull and Nullable annotations
+ * they are Spring Null-Safety annotations, the null-safety feature produces warnings at compile time. Such warnings
+ * may prevent catastrophic null pointer exceptions (NPEs) at runtime. BUT It doesn't enforce null checks at runtime –
+ * we still need to write code ourselves to avert NPEs
+ *
+ *
  * @param <DOMAIN> domain type
  * @param <ID>     id type
  * @author johnniang
