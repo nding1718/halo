@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Date utilities.
- *
+ * You should alwasy use Calender, recommended by the Java official, Date is kind of outdated
  * @author johnniang
  * @date 3/18/19
  */
