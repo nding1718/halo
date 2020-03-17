@@ -9,6 +9,8 @@ import java.io.File;
 /**
  * Filename utilities.
  *
+ * Notice the usage of apache common lang3, Stringutils
+ *
  * @author johnniang
  * @date 3/26/19
  */
