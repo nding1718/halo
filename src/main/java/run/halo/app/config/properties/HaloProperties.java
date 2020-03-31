@@ -15,10 +15,19 @@ import static run.halo.app.utils.HaloUtils.ensureSuffix;
 /**
  * Halo configuration properties.
  *
+ * Before we dive down into the learning of configuration, we should know a concept at first.
+ *
+ * POJO:
+ *  POJO stands for Plain Old Java Object, you can simply refer it as simple java beans, as a different to EJB, they are
+ *  not constraint by any other rules(not like EJB) but only the java standards
+ *
+ * One handy features of Spring Boot is externalized configurations and easy access to properties defined in properties
+ * files. Here we talk about sth about the ConfigurationProperties annotation:
+ *  -- it works best with hierarchical properties that all have the same prefix. ==> here would be 'halo'
  * @author johnniang
  */
-@Data
-@ConfigurationProperties("halo")
+@Data // annotation used to auto generate get and set methods
+@ConfigurationProperties("halo") // set this POJO as configurations and add prefix "halo"
 public class HaloProperties {
 
     /**
