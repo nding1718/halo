@@ -28,22 +28,24 @@ import run.halo.app.service.UserService;
 import run.halo.app.utils.HaloUtils;
 import run.halo.app.utils.HttpClientUtils;
 
+import javax.servlet.Servlet;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
 
 /**
  * Halo configuration.
- *
+ *  Jackson is a JSON framework for Java or JVM based more general language
  * @author johnniang
  */
-@Configuration
-@EnableConfigurationProperties(HaloProperties.class)
-@Slf4j
+@Configuration // this annotation will let spring create a Spring Bean in tha application context
+@EnableConfigurationProperties(HaloProperties.class) // used to bind the properties into POJO (HaloProperties), misuse maybe
+@Slf4j // Causes lombok to generate a logger field.
 public class HaloConfiguration {
 
     @Autowired
     HaloProperties haloProperties;
+
 
     @Bean
     public ObjectMapper objectMapper(Jackson2ObjectMapperBuilder builder) {
@@ -52,6 +54,9 @@ public class HaloConfiguration {
     }
 
     @Bean
+    /**
+     * RestTemplate is an old version of Spring Rest Client
+     */
     public RestTemplate httpsRestTemplate(RestTemplateBuilder builder)
             throws NoSuchAlgorithmException, KeyStoreException, KeyManagementException {
         RestTemplate httpsRestTemplate = builder.build();
@@ -61,7 +66,7 @@ public class HaloConfiguration {
     }
 
     @Bean
-    @ConditionalOnMissingBean
+    @ConditionalOnMissingBean // if we don't have this bean, creat it
     public StringCacheStore stringCacheStore() {
         return new InMemoryCacheStore();
     }
